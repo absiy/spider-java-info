@@ -1,9 +1,14 @@
 package com.xz.spider.bilibili;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import com.xz.spider.bilibili.util.Constant;
+
 
 
 /**
@@ -15,6 +20,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SpringBootApplication
 @EnableCaching
 @EnableTransactionManagement
+//mapper 接口类扫描包配置
+@MapperScan("com.xz.spider.bilibili.dao")
 public class Application {
 
     public static void main(String[] args) {

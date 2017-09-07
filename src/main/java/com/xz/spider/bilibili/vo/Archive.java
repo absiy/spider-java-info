@@ -111,5 +111,12 @@ public class Archive {
 	public void setCopyright(Integer copyright) {
 		this.copyright = copyright;
 	}
+
+	@Override
+	public String toString() {
+		return "Archive [aid=" + aid + ", view=" + view + ", danmaku=" + danmaku + ", reply=" + reply + ", favorite="
+				+ favorite + ", coin=" + coin + ", share=" + share + ", now_rank=" + now_rank + ", his_rank=" + his_rank
+				+ ", no_reprint=" + no_reprint + ", copyright=" + copyright + "]";
+	}
 	
 }
