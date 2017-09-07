@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xz.spider.bilibili.dao.VideoDao" >
+  <resultMap id="BaseResultMap" type="com.xz.spider.bilibili.pojo.Video" >
+    <id column="aid" property="aid" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="play_count" property="playCount" jdbcType="INTEGER" />
+    <result column="play_rank" property="playRank" jdbcType="INTEGER" />
+    <result column="date" property="date" jdbcType="DATE" />
+    <result column="barrage_count" property="barrageCount" jdbcType="INTEGER" />
+    <result column="barrage_rank" property="barrageRank" jdbcType="INTEGER" />
+    <result column="coin_count" property="coinCount" jdbcType="INTEGER" />
+    <result column="collection_count" property="collectionCount" jdbcType="INTEGER" />
+    <result column="share_count" property="shareCount" jdbcType="INTEGER" />
+    <result column="share_rank" property="shareRank" jdbcType="INTEGER" />
+    <result column="up_name" property="upName" jdbcType="VARCHAR" />
+    <result column="fans_count" property="fansCount" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="duration" property="duration" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    aid, name, play_count, play_rank, date, barrage_count, barrage_rank, coin_count, 
+    collection_count, share_count, share_rank, up_name, fans_count, type, duration, url
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from video
+    where aid = #{aid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from video
+    where aid = #{aid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xz.spider.bilibili.pojo.Video" >
+    insert into video (aid, name, play_count, 
+      play_rank, date, barrage_count, 
+      barrage_rank, coin_count, collection_count, 
+      share_count, share_rank, up_name, 
+      fans_count, type, duration, 
+      url)
+    values (#{aid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{playCount,jdbcType=INTEGER}, 
+      #{playRank,jdbcType=INTEGER}, #{date,jdbcType=DATE}, #{barrageCount,jdbcType=INTEGER}, 
+      #{barrageRank,jdbcType=INTEGER}, #{coinCount,jdbcType=INTEGER}, #{collectionCount,jdbcType=INTEGER}, 
+      #{shareCount,jdbcType=INTEGER}, #{shareRank,jdbcType=INTEGER}, #{upName,jdbcType=VARCHAR}, 
+      #{fansCount,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, #{duration,jdbcType=VARCHAR}, 
+      #{url,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xz.spider.bilibili.pojo.Video" >
+    insert into video
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="aid != null" >
+        aid,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="playCount != null" >
+        play_count,
+      </if>
+      <if test="playRank != null" >
+        play_rank,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+      <if test="barrageCount != null" >
+        barrage_count,
+      </if>
+      <if test="barrageRank != null" >
+        barrage_rank,
+      </if>
+      <if test="coinCount != null" >
+        coin_count,
+      </if>
+      <if test="collectionCount != null" >
+        collection_count,
+      </if>
+      <if test="shareCount != null" >
+        share_count,
+      </if>
+      <if test="shareRank != null" >
+        share_rank,
+      </if>
+      <if test="upName != null" >
+        up_name,
+      </if>
+      <if test="fansCount != null" >
+        fans_count,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="duration != null" >
+        duration,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="aid != null" >
+        #{aid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="playCount != null" >
+        #{playCount,jdbcType=INTEGER},
+      </if>
+      <if test="playRank != null" >
+        #{playRank,jdbcType=INTEGER},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=DATE},
+      </if>
+      <if test="barrageCount != null" >
+        #{barrageCount,jdbcType=INTEGER},
+      </if>
+      <if test="barrageRank != null" >
+        #{barrageRank,jdbcType=INTEGER},
+      </if>
+      <if test="coinCount != null" >
+        #{coinCount,jdbcType=INTEGER},
+      </if>
+      <if test="collectionCount != null" >
+        #{collectionCount,jdbcType=INTEGER},
+      </if>
+      <if test="shareCount != null" >
+        #{shareCount,jdbcType=INTEGER},
+      </if>
+      <if test="shareRank != null" >
+        #{shareRank,jdbcType=INTEGER},
+      </if>
+      <if test="upName != null" >
+        #{upName,jdbcType=VARCHAR},
+      </if>
+      <if test="fansCount != null" >
+        #{fansCount,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="duration != null" >
+        #{duration,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xz.spider.bilibili.pojo.Video" >
+    update video
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="playCount != null" >
+        play_count = #{playCount,jdbcType=INTEGER},
+      </if>
+      <if test="playRank != null" >
+        play_rank = #{playRank,jdbcType=INTEGER},
+      </if>
+      <if test="date != null" >
+        date = #{date,jdbcType=DATE},
+      </if>
+      <if test="barrageCount != null" >
+        barrage_count = #{barrageCount,jdbcType=INTEGER},
+      </if>
+      <if test="barrageRank != null" >
+        barrage_rank = #{barrageRank,jdbcType=INTEGER},
+      </if>
+      <if test="coinCount != null" >
+        coin_count = #{coinCount,jdbcType=INTEGER},
+      </if>
+      <if test="collectionCount != null" >
+        collection_count = #{collectionCount,jdbcType=INTEGER},
+      </if>
+      <if test="shareCount != null" >
+        share_count = #{shareCount,jdbcType=INTEGER},
+      </if>
+      <if test="shareRank != null" >
+        share_rank = #{shareRank,jdbcType=INTEGER},
+      </if>
+      <if test="upName != null" >
+        up_name = #{upName,jdbcType=VARCHAR},
+      </if>
+      <if test="fansCount != null" >
+        fans_count = #{fansCount,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="duration != null" >
+        duration = #{duration,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where aid = #{aid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xz.spider.bilibili.pojo.Video" >
+    update video
+    set name = #{name,jdbcType=VARCHAR},
+      play_count = #{playCount,jdbcType=INTEGER},
+      play_rank = #{playRank,jdbcType=INTEGER},
+      date = #{date,jdbcType=DATE},
+      barrage_count = #{barrageCount,jdbcType=INTEGER},
+      barrage_rank = #{barrageRank,jdbcType=INTEGER},
+      coin_count = #{coinCount,jdbcType=INTEGER},
+      collection_count = #{collectionCount,jdbcType=INTEGER},
+      share_count = #{shareCount,jdbcType=INTEGER},
+      share_rank = #{shareRank,jdbcType=INTEGER},
+      up_name = #{upName,jdbcType=VARCHAR},
+      fans_count = #{fansCount,jdbcType=INTEGER},
+      type = #{type,jdbcType=VARCHAR},
+      duration = #{duration,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR}
+    where aid = #{aid,jdbcType=VARCHAR}
+  </update>
+</mapper>
